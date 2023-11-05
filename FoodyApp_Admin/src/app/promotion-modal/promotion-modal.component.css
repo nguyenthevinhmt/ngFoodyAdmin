@@ -1,0 +1,31 @@
+main {
+  width: 600px;
+  height: 800px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.p-inputgroup {
+  margin: 10px;
+  width: 500px;
+}
+
+.p-inputgroup-addon {
+  width: 150px;
+}
+
+input {
+  width: 300;
+}
+
+p-button {
+  margin-left: 40%;
+}
+
+p-inputSwitch{
+  margin-top: 10px;
+  margin-left: 10px;
+}

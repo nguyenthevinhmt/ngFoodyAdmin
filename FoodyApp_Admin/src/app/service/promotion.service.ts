@@ -31,7 +31,6 @@ export class PromotionService {
 
   public addPromotion(data: any) {
     const headers = this.headers;
-    console.log(headers.get('Authorization'));
     return this.http.post(`${this.apiUrl}/create-promotion`, data, { headers });
   }
 

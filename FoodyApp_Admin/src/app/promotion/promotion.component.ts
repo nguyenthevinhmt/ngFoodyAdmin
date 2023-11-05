@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PromotionService } from '../service/promotion.service';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { PromotionModalComponent } from '../promotion-modal/promotion-modal.component';
 
 @Component({
   selector: 'app-promotion',
@@ -8,13 +11,12 @@ import { PromotionService } from '../service/promotion.service';
 })
 export class PromotionComponent implements OnInit {
   public listPromotion: any;
-  constructor(private promotionService: PromotionService) {
+  constructor(private promotionService: PromotionService, private dialog: MatDialog, private snackBar: MatSnackBar) {
 
   }
 
   ngOnInit(): void {
     this.getAllPromotion();
-    this.getPromotionById();
   }
 
   private getAllPromotion() {
@@ -24,7 +26,7 @@ export class PromotionComponent implements OnInit {
     })
   }
 
-  public getPromotionById() {
+  public getPromotionById(id: string) {
     this.promotionService.getPromotionById('1').subscribe({
       next: (data) => {
         console.log(data);
@@ -36,47 +38,44 @@ export class PromotionComponent implements OnInit {
   }
 
   public addPromotion() {
-    let data = {
-      name: "Không giảm giá",
-      promotionCode: "123",
-      description: "Không giảm giá",
-      discountPercent: 0,
-      startTime: "0001-01-01T00:00:00",
-      endTime: "0001-01-01T00:00:00",
-      isActive: true
-  }
-    console.log(data)
-    this.promotionService.addPromotion(data).subscribe({
-      next: (data: any) => {
-        console.log("them thanh cong");
-      },
-      error: (err: any) => {
-        console.log(err.status)
-        console.error('loi khi them ', err);
-      }
+    sessionStorage.setItem('promotionId', '');
+    const dialogRef = this.dialog.open(PromotionModalComponent, {
+      data: { title: 'ADD PROMOTION' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 
-  public editPromotion() {
-    let data = {
-      id: '10',
-      name: 'test edit',
-      description: 'abc'
+  public editPromotion(id: string) {
+    sessionStorage.setItem('promotionId', id);
+    const dialogRef = this.dialog.open(PromotionModalComponent, {
+      data: { title: 'EDIT PROMOTION' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  public deletePromotionById(id: string) {
+    if (confirm('Co chac chan xoa khong?')) {
+      this.promotionService.deletePromotionById(id).subscribe({
+        next: () => {
+          this.snackBar.open('Xoa thanh cong', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        error: () => {
+          this.snackBar.open('Xoa khong thanh cong', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+        }
+      });
     }
-    this.promotionService.editPromotion(data).subscribe({
-      next: (data: any) => {
-        console.log("sua thanh cong");
-      },
-      error: (err: any) => {
-        console.log(err.status)
-        console.error('loi khi sua ', err);
-      }
-    });
-  }
-
-  public deletePromotionById() {
-    this.promotionService.deletePromotionById('9').subscribe(data => {
-      console.log(data);
-    })
   }
 }

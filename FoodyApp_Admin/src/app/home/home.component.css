@@ -1,0 +1,17 @@
+h1{
+  text-align: center;
+  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.main{
+  margin-top: 5%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);;
+}
+
+p-button{
+  margin: 20px;
+}

@@ -9,15 +9,19 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CalendarModule } from 'primeng/calendar';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CategoryComponent } from './category/category.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PromotionComponent } from './promotion/promotion.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './category/login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryModalComponent } from './category-modal/category-modal.component';
+import { HomeComponent } from './home/home.component';
+import { PromotionModalComponent } from './promotion-modal/promotion-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +29,9 @@ import { CategoryModalComponent } from './category-modal/category-modal.componen
     CategoryComponent,
     PromotionComponent,
     LoginComponent,
-    CategoryModalComponent
+    CategoryModalComponent,
+    HomeComponent,
+    PromotionModalComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,9 @@ import { CategoryModalComponent } from './category-modal/category-modal.componen
     InputTextModule,
     CheckboxModule,
     RadioButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CalendarModule,
+    InputSwitchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

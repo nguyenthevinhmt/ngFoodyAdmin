@@ -1,0 +1,49 @@
+<main>
+  <h2>{{ data.title }}</h2>
+  <form [formGroup]="promotionForm" (ngSubmit)="submitForm()">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"> Name </span>
+      <input type="text" pInputText placeholder="Name" formControlName="name" />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"> Promotion Code </span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Promotion Code"
+        formControlName="promotionCode"
+      />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Description</span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Description"
+        formControlName="description"
+      />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Discount Percent</span>
+      <input
+        type="number"
+        pInputText
+        placeholder="Discount Percent"
+        formControlName="discountPercent"
+      />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Start time</span>
+      <p-calendar formControlName="startTime" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">End time</span>
+      <p-calendar formControlName="endTime" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Is Active</span>
+      <p-inputSwitch formControlName="isActive"></p-inputSwitch>
+    </div>
+    <p-button label="Submit" (click)="submitForm()"></p-button>
+  </form>
+</main>

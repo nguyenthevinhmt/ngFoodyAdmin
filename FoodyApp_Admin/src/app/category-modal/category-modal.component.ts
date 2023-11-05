@@ -12,7 +12,6 @@ import { MatSnackBar, MatSnackBarVerticalPosition } from '@angular/material/snac
 export class CategoryModalComponent implements OnInit {
   categoryForm: FormGroup;
   isEditType: boolean = false;
-  title: string = 'ADD CATEGORY';
   constructor(private formBuilder: FormBuilder, private categoryService: CategoryService, private snackBar: MatSnackBar,
     public dialogRef: MatDialogRef<CategoryModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -28,7 +27,6 @@ export class CategoryModalComponent implements OnInit {
     const categoryId = sessionStorage.getItem('categoryId');
     if (categoryId) {
       this.isEditType = true;
-      this.title = 'EDIT CATEGORY';
       this.categoryForm.patchValue({ id: categoryId });
       this.categoryService.getCategoryById(categoryId).subscribe({
         next: (data: any) => {

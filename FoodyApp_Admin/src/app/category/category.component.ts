@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../service/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { CategoryModalComponent } from '../category-modal/category-modal.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -11,7 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class CategoryComponent implements OnInit {
   listCategory: any;
-  constructor(private categoryService: CategoryService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar,) {
+  constructor(private categoryService: CategoryService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar) {
     console.log(sessionStorage.getItem('accessToken'))
   }
 
@@ -40,7 +40,7 @@ export class CategoryComponent implements OnInit {
   public addCategory() {
     sessionStorage.setItem('categoryId', '');
     const dialogRef = this.dialog.open(CategoryModalComponent, {
-      data: { title: 'Modal Title' }
+      data: { title: 'ADD CATEGORY' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -50,7 +50,7 @@ export class CategoryComponent implements OnInit {
   public editCategory(id: string) {
     sessionStorage.setItem('categoryId', id)
     const dialogRef = this.dialog.open(CategoryModalComponent, {
-      data: { title: 'Modal Title' }
+      data: { title: 'EDIT CATEGORY' }
     });
 
     dialogRef.afterClosed().subscribe(result => {
