@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CONSTANT } from './Common';
+import { CONSTANT } from '../Common';
 import { LoginService } from './login.service';
 
 

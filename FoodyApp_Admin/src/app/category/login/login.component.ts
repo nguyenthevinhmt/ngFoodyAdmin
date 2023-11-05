@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../login.service';
+import { LoginService } from '../../service/login.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
         console.log(data);
         sessionStorage.setItem('accessToken', data.accessToken);
         sessionStorage.setItem('refreshToken', data.refreshToken);
-        this.router.navigateByUrl('/promotion');
+        this.router.navigateByUrl('/category');
+        console.log('Login success!')
       },
       error: (err) => {
         console.log(err)

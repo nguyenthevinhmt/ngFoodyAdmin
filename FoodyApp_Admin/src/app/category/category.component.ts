@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoryService } from '../category.service';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { CategoryService } from '../service/category.service';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -7,13 +8,12 @@ import { CategoryService } from '../category.service';
 })
 export class CategoryComponent implements OnInit {
   listCategory: any;
-  constructor(private categoryService: CategoryService) {
-
+  constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
+    console.log(sessionStorage.getItem('accessToken'))
   }
 
   ngOnInit(): void {
     this.getAllCategory();
-    this.getCategoryById();
   }
 
   private getAllCategory() {
@@ -68,9 +68,18 @@ export class CategoryComponent implements OnInit {
     });
   }
 
-  public deleteCategoryById() {
-    this.categoryService.deleteCategoryById('9').subscribe(data => {
-      console.log(data);
-    })
+  public deleteCategoryById(id: string) {
+    if (confirm('Are you sure delete?')) {
+      this.categoryService.deleteCategoryById(id).subscribe({
+        next: () => {
+          alert('Xoa thanh cong');
+          window.location.reload();
+        },
+        error: () => {
+          alert('Loi khi xoa');
+          window.location.reload();
+        }
+      });
+    }
   }
 }

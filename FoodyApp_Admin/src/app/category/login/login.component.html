@@ -1,10 +1,3 @@
-
-<!-- <form [formGroup]="LoginForm" (ngSubmit)="onLogin()">
-  <input formControlName="email" type="text" placeholder="Email" />
-  <button (click)="onLogin">aa</button>
-</form> -->
-
-
 <div class="outer">
   <div class="container">
     <div class="row">
@@ -30,14 +23,6 @@
                   />
                 </div>
               </div>
-              <!-- <small
-                *ngIf="
-                  LoginForm.controls['email'].dirty &&
-                  LoginForm.hasError('required', 'email')
-                "
-                class="text-danger"
-                >*UserName is required!</small
-              > -->
               <div class="form-group pt-3">
                 <div
                   class="input-field"
@@ -48,17 +33,8 @@
                     type="password"
                     placeholder="Password"
                   />
-                  <!-- <span (click)="togglePassword()" [class]="eyeIcon"></span> -->
                 </div>
               </div>
-              <!-- <small
-                *ngIf="
-                  LoginForm.controls['password'].dirty &&
-                  LoginForm.hasError('required', 'password')
-                "
-                class="text-danger"
-                >*Password is required!</small
-              > -->
               <div class="form-inline fr mt-4">
                 <a id="forget" class="font-weight-bold">Forget Password?</a>
               </div>
