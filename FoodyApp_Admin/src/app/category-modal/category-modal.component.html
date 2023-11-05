@@ -1,0 +1,19 @@
+<main>
+  <h2>{{ title }}</h2>
+  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"> Name </span>
+      <input pInputText placeholder="Name" formControlName="name" />
+    </div>
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">Description</span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Description"
+        formControlName="description"
+      />
+    </div>
+    <p-button label="Submit" (click)="submitForm()"></p-button>
+  </form>
+</main>

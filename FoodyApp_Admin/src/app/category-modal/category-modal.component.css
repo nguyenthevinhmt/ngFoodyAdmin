@@ -1,0 +1,27 @@
+main {
+  width: 520px;
+  height: 230px;
+}
+
+h2 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.p-inputgroup {
+  margin: 10px;
+  width: 500px;
+}
+
+.p-inputgroup-addon {
+  width: 100px;
+}
+
+input {
+  width: 300;
+}
+
+p-button {
+  margin-left: 40%;
+}
+

@@ -2,12 +2,13 @@
   <div class="container">
     <div class="content">
       <div class="content-main">
-        <h1 class="title">Manage Category</h1>
+        <h1 class="title">MANAGE CATEGORY</h1>
         <button
           pButton
           pRipple
           label="Add Category"
           class="p-button-success"
+          (click)="addCategory()"
         ></button>
       </div>
       <p-table [value]="listCategory" [tableStyle]="{ 'min-width': '50rem' }">
@@ -27,7 +28,7 @@
               <p-button
                 label="Edit"
                 severity="help"
-                (click)="editCategory()"
+                (click)="editCategory(i.id)"
               ></p-button
               ><p-button
                 label="Delete"

@@ -1,6 +1,9 @@
-import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../service/category.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { CategoryModalComponent } from '../category-modal/category-modal.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
@@ -8,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CategoryComponent implements OnInit {
   listCategory: any;
-  constructor(private categoryService: CategoryService, private router: Router, private route: ActivatedRoute) {
+  constructor(private categoryService: CategoryService, private router: Router, private dialog: MatDialog, private snackBar: MatSnackBar,) {
     console.log(sessionStorage.getItem('accessToken'))
   }
 
@@ -35,49 +38,42 @@ export class CategoryComponent implements OnInit {
   }
 
   public addCategory() {
-    let data = {
-      name: 'test11',
-      description: 'abc'
-    }
-    console.log(data)
-    this.categoryService.addCategory(data).subscribe({
-      next: (data: any) => {
-        console.log("them thanh cong");
-      },
-      error: (err: any) => {
-        console.log(err.status)
-        console.error('loi khi them ', err);
-      }
+    sessionStorage.setItem('categoryId', '');
+    const dialogRef = this.dialog.open(CategoryModalComponent, {
+      data: { title: 'Modal Title' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 
-  public editCategory() {
-    let data = {
-      id: '10',
-      name: 'test edit',
-      description: 'abc'
-    }
-    this.categoryService.editCategory(data).subscribe({
-      next: (data: any) => {
-        console.log("sua thanh cong");
-      },
-      error: (err: any) => {
-        console.log(err.status)
-        console.error('loi khi sua ', err);
-      }
+  public editCategory(id: string) {
+    sessionStorage.setItem('categoryId', id)
+    const dialogRef = this.dialog.open(CategoryModalComponent, {
+      data: { title: 'Modal Title' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
     });
   }
 
   public deleteCategoryById(id: string) {
-    if (confirm('Are you sure delete?')) {
+    if (confirm('Co chac chan xoa khong?')) {
       this.categoryService.deleteCategoryById(id).subscribe({
         next: () => {
-          alert('Xoa thanh cong');
-          window.location.reload();
+          this.snackBar.open('Xoa thanh cong', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
         },
         error: () => {
-          alert('Loi khi xoa');
-          window.location.reload();
+          this.snackBar.open('Xoa khong thanh cong', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
         }
       });
     }
