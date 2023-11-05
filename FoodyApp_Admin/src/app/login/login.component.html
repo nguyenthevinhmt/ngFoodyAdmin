@@ -1,0 +1,101 @@
+
+<!-- <form [formGroup]="LoginForm" (ngSubmit)="onLogin()">
+  <input formControlName="email" type="text" placeholder="Email" />
+  <button (click)="onLogin">aa</button>
+</form> -->
+
+
+<div class="outer">
+  <div class="container">
+    <div class="row">
+      <div
+        class="offset-md-2 col-md-5 col-md-7 offset-lg-4 offset-md-3 d-flex align-items-center"
+      >
+        <div class="panel border bg-white">
+          <div class="panel-heading">
+            <h3 class="pt-3 font-weight-bold">Login</h3>
+          </div>
+          <div class="panel-body p-3">
+            <form [formGroup]="LoginForm" (ngSubmit)="onLogin()">
+
+              <div class="form-group pt-3">
+                <div
+                  class="input-field"
+                >
+                  <span class="fa fa-user p-2"></span>
+                  <input
+                    formControlName="email"
+                    type="text"
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
+              <!-- <small
+                *ngIf="
+                  LoginForm.controls['email'].dirty &&
+                  LoginForm.hasError('required', 'email')
+                "
+                class="text-danger"
+                >*UserName is required!</small
+              > -->
+              <div class="form-group pt-3">
+                <div
+                  class="input-field"
+                >
+                  <span class="fa fa-lock p-2"></span>
+                  <input
+                    formControlName="password"
+                    type="password"
+                    placeholder="Password"
+                  />
+                  <!-- <span (click)="togglePassword()" [class]="eyeIcon"></span> -->
+                </div>
+              </div>
+              <!-- <small
+                *ngIf="
+                  LoginForm.controls['password'].dirty &&
+                  LoginForm.hasError('required', 'password')
+                "
+                class="text-danger"
+                >*Password is required!</small
+              > -->
+              <div class="form-inline fr mt-4">
+                <a id="forget" class="font-weight-bold">Forget Password?</a>
+              </div>
+              <button
+                (click)="onLogin()"
+                type="submit"
+                class="btn btn-primary btn-block mt-4 w-100"
+              >
+                Login
+              </button>
+              <div class="text-center pt-4 text-muted">
+                Don't have an account?
+                <a id="forget" routerLink="/signup">Sign Up</a>
+              </div>
+            </form>
+          </div>
+          <div class="mx-3 my-2 py-2 bordert">
+            <div class="text-center py-3">
+              <a href="https://www.facebook.com" target="_blank" class="px-2"
+                ><img
+                  src="data:image/png;base64,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"
+                  alt="#"
+              /></a>
+              <a href="https://www.google.com" target="_blank" class="px-2"
+                ><img
+                  src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-webinar-optimizing-for-success-google-business-webinar-13.png"
+                  alt="#"
+              /></a>
+              <a href="https://www.github.com" target="_blank" class="px-2"
+                ><img
+                  src="https://w7.pngwing.com/pngs/646/324/png-transparent-github-computer-icons-github-logo-monochrome-head-thumbnail.png"
+                  alt="#"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
