@@ -1,0 +1,26 @@
+<main>
+  <h2>{{ data.title }}</h2>
+  <form [formGroup]="orderFormGroup" (ngSubmit)="submitForm()">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon"> Id </span>
+      <input
+        type="text"
+        pInputText
+        placeholder="Id"
+        formControlName="orderId"
+        readonly
+      />
+    </div>
+    <div class="select">
+      <span class="p-inputgroup-addon"> New Status </span>
+      <p-dropdown
+        [options]="status"
+        formControlName="newStatus"
+        optionLabel="name"
+        placeholder="Select status"
+      ></p-dropdown>
+    </div>
+
+    <p-button label="Submit" (click)="submitForm()"></p-button>
+  </form>
+</main>

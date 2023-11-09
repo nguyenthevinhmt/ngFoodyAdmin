@@ -11,6 +11,8 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { DropdownModule } from 'primeng/dropdown';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CategoryModalComponent } from './category-modal/category-modal.component';
 import { HomeComponent } from './home/home.component';
 import { PromotionModalComponent } from './promotion-modal/promotion-modal.component';
+import { OrderModalComponent } from './order-modal/order-modal.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { PromotionModalComponent } from './promotion-modal/promotion-modal.compo
     LoginComponent,
     CategoryModalComponent,
     HomeComponent,
-    PromotionModalComponent
+    PromotionModalComponent,
+    OrderModalComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,9 @@ import { PromotionModalComponent } from './promotion-modal/promotion-modal.compo
     RadioButtonModule,
     MatSnackBarModule,
     CalendarModule,
-    InputSwitchModule
+    InputSwitchModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,39 @@
+<main>
+  <div class="container">
+    <div class="content">
+      <div class="content-main">
+        <h1 class="title">MANAGE PROMOTION</h1>
+      </div>
+      <p-dropdown
+        [options]="status"
+        [(ngModel)]="selectedStatus"
+        optionLabel="name"
+        placeholder="Select status"
+        (click)="searchOrderByStatus()"
+      ></p-dropdown>
+      <p-table [value]="listOrder" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Id</th>
+            <th>Customer</th>
+            <th>OrderStatus</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-i>
+          <tr>
+            <td>{{ i.id }}</td>
+            <td>{{ i.customerFullName }}</td>
+            <td>{{ convertOderStatus(i.orderStatus) }}</td>
+            <td>
+              <p-button
+                label="Change Status"
+                severity="help"
+                (click)="changeStatusOrder(i.id, i.orderStatus)"
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</main>

@@ -1,5 +1,5 @@
 import { PromotionService } from './../service/promotion.service';
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -9,8 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './promotion-modal.component.html',
   styleUrls: ['./promotion-modal.component.css']
 })
-export class PromotionModalComponent {
-
+export class PromotionModalComponent implements OnInit {
   promotionForm: FormGroup;
   isEditType: boolean = false;
   constructor(private formBuilder: FormBuilder, private PromotionService: PromotionService, private snackBar: MatSnackBar,
