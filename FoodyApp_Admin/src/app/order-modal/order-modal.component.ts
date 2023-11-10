@@ -70,8 +70,23 @@ export class OrderModalComponent implements OnInit {
       newStatus: newStatus
     });
     console.log(orderFormGroup.value)
-    this.orderService.updateOrderStatus(orderFormGroup.value).subscribe(()=>{
-      alert('thanh cong')
+    this.orderService.updateOrderStatus(orderFormGroup.value).subscribe({
+      error: (err: any) => {
+        if (err.status == 200) {
+          this.snackBar.open('Update status thanh cong!', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        } else {
+          this.snackBar.open('Update status khong thanh cong!', '', {
+            duration: 2000,
+            verticalPosition: 'top',
+          });
+        }
+      }
     });
   }
 }

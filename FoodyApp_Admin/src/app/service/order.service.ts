@@ -8,7 +8,12 @@ import { CONSTANT } from '../Common';
 export class OrderService {
   private apiUrl: string = `${CONSTANT.apiUrl}/Order`;
   private headers = new HttpHeaders();
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    const accessToken = sessionStorage.getItem('accessToken');
+    if (accessToken) {
+      this.headers = this.headers.set('Authorization', `Bearer ${accessToken}`);
+    }
+  }
 
   public getAllOrder() {
     let params = new HttpParams()
@@ -45,6 +50,6 @@ export class OrderService {
 
   public updateOrderStatus(data: any) {
     const headers = this.headers;
-    return this.http.post(`${this.apiUrl}/update-order-status`, data, { headers });
+    return this.http.put(`${this.apiUrl}/update-order-status`, data, { headers });
   }
 }
